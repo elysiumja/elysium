@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysium</title>
+    <link rel="stylesheet" href="/css/style_productos_general.css">
+    <link rel="stylesheet" href="/css/style_productos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="icon" href="/resources/logo.ico">
+    <script src="https://kit.fontawesome.com/50a147dc6f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- MENÚ NAVEGACIÓN -->
+    <nav>
+        <a href="/html/index.html" class="enlace">
+            <img src="/resources/logo.png" alt="logo" class="logo">
+        </a>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul class="nav-list">
+            <li><a href="/html/index.html">Inicio</a></li>
+            <li><a href="/html/index.html#aromas">Aromas</a></li>
+            <li><a class="active" href="/html/productos.html">Productos</a></li>
+            <li><a href="/html/index.html#contacto">Contacto</a></li>
+            <li class="search-container">
+                <input type="text" placeholder="Buscar..." class="search-bar">
+            </li>
+            <li><a id="cartButton" class="cart-icon">(<span id="cartCount">0</span>)<i class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+        <div id="cartSidebar" class="cart-sidebar">
+            <div class="cart-content">
+                <span class="close">&times;</span>
+                <h2>Tu carrito <br>(<span id="cartItemCount">0</span> artículos)</h2>
+                <div id="cartItems"></div>
+                <div id="cartSummary">
+                    <p>Subtotal: <span id="subtotal">$0</span></p>
+                    <p>Total: <span id="total">$0</span></p>
+                </div>
+                <button id="proceedButton">Iniciar compra</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="product-detail">
+        <div class="product-gallery">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="/resources/portada-producto.jpeg" alt="Imagen del producto" class="main-image" onclick="openFullscreen(this)">
+                    <img src="/resources/portada-producto.jpeg" alt="Imagen secundaria 1" class="main-image" onclick="openFullscreen(this)">
+                    <img src="/resources/portada-producto.jpeg" alt="Imagen secundaria 2" class="main-image" onclick="openFullscreen(this)">
+                </div>
+                <button class="carousel-prev">&#10094;</button>
+                <button class="carousel-next">&#10095;</button>
+                <div class="carousel-indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay para la imagen en pantalla completa -->
+        <div id="fullscreenOverlay" class="overlay">
+            <button class="close-btn" onclick="closeFullscreen()">&times;</button>
+            <img id="fullscreenImage" src="" alt="Fullscreen Image">
+        </div>
+
+        <div class="product-info">
+            <h2>Pack citronela</h2>
+            <p class="price">$00.00</p>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                    <p>Pagá con efectivo</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fa-solid fa-money-bill-transfer"></i>
+                    <p>Pagá con transferencia</p>
+                </div>
+            </div>
+            <p class="descripcion_producto">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.
+            </p>
+            <p class="intensidad">
+                INTENSIDAD
+                <span class="intensidad-icons">
+                    <i class="fa-solid fa-spray-can-sparkles"></i>
+                    <i class="fa-solid fa-spray-can-sparkles"></i>
+                    <i class="fa-solid fa-spray-can-sparkles"></i>
+                </span>
+            </p>
+            <form class="add-to-cart">
+                <label for="quantity">Cantidad:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button type="submit">Añadir al carrito</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="footer-top">
+                <div class="logo-section">
+                    <a href="#" class="logo-link">
+                        <img src="/resources/logo-footer.png" alt="logo_footer" class="logo-footer">
+                    </a>
+                    <p class="description">Encuentra la paz en cada aroma.</p>
+                </div>
+                <div class="links-section">
+                    <h3 class="section-title">Enlaces</h3>
+                    <ul class="links-list">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="contact-section">
+                    <h3 class="section-title">Contacto</h3>
+                    <p><i class="fa-solid fa-envelope"></i> elysium2024.ja@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i> (351) 123-4567</p>
+                    <a href="https://maps.app.goo.gl/nwkWK8r8idpYMqgz5"><p><i class="fa-solid fa-location-dot"></i> Colegio de la Inmaculada</p></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-media">
+                    <a href="https://www.instagram.com/elysium.ja/" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Elysium-Ja/pfbid0akYoQEc3qxVXsPsshHGqkQr8ARCJiYkb46vKJdYY9cyFp6FUBRDoQeumKoShn9tEl/?mibextid=LQQJ4d" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://x.com/elysium_ja/" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.tiktok.com/@elysium.ja" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="mailto:elysium2024.ja@gmail.com" class="social-link"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+                <p class="copyright">&copy; 2024 Elysium.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script_productos_general.js"></script>
+</body>
+</html>
