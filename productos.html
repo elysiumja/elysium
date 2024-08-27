@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysium</title>
+    <link rel="stylesheet" href="/css/style_productos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="icon" href="/resources/logo.ico">
+    <script src="https://kit.fontawesome.com/50a147dc6f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            // Inicialmente ocultar el botón
+            backToTopButton.style.display = 'none';
+    
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) { // Ajusta el valor según sea necesario
+                    backToTopButton.style.display = 'inline-flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+    <!-- MENÚ NAVEGACIÓN -->
+<nav>
+    <a href="/html/index.html" class="enlace">
+        <img src="/resources/logo.png" alt="logo" class="logo">
+    </a>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <ul class="nav-list">
+        <li><a href="/html/index.html">Inicio</a></li>
+        <li><a href="/html/index.html#aromas">Aromas</a></li>
+        <li><a class="active" href="#">Productos</a></li>
+        <li><a href="/html/index.html#contacto">Contacto</a></li>
+        <li class="search-container">
+            <input type="text" placeholder="Buscar..." class="search-bar">
+        </li>
+        <li><a id="cartButton" class="cart-icon">(<span id="cartCount">0</span>)<i class="fas fa-shopping-cart"></i></a></li>
+        <div id="cartSidebar" class="cart-sidebar">
+            <div class="cart-content">
+              <span class="close">&times;</span>
+              <br>
+              <center><h2>Tu carrito <br>(<span id="cartItemCount">0</span> artículos)</h2></center>
+              <br><br>
+              <div id="cartItems"></div>
+              <div id="cartSummary">
+                <p><span id="subtotal">$0</span></p><p id="discount-applied"></p>
+                <p><span id="total">$0</span></p>
+              </div>
+              <div class="proceed-button-container">
+                <a href="factura.html"><button id="proceedButton" disabled>Iniciar compra</button></a>
+            </div>            
+            </div>
+          </div>
+    </ul>
+</nav>
+
+<!-- BOTÓN SCROLL-TOP -->
+<a href="#" class="back-to-top">
+    <i class="fa-solid fa-arrow-up-wide-short"></i>
+</a>
+
+<!-- NUESTROS PRODUCTOS -->
+
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                <h2 class="title">Nuestros Productos</h2>
+                <p class="descripcion">
+                    Explora nuestro catálogo de productos artesanales.
+                </p>
+                <div class="filter-container">
+                    <button class="filter-button" onclick="toggleFilters()">
+                        Filtrar Productos
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                    </button>
+                    <div id="filters" class="filters" style="display: none;">
+                        <button onclick="filterPortasahumerios('portasahumerios')">Portasahumerios</button>
+                        <button onclick="sortProducts('priceAsc')">Menor a mayor precio</button>
+                        <button onclick="sortProducts('priceDesc')">Mayor a menor precio</button>
+                        <button onclick="filterDiscount()">Productos con descuento</button>
+                        <div class="intensity-filter">
+                            <p>Intensidad</p>
+                            <button><i class="fa-solid fa-spray-can-sparkles" data-intensity="1" onclick="toggleFilterByIntensity(1)"></i></button>
+                            <button><i class="fa-solid fa-spray-can-sparkles" data-intensity="2" onclick="toggleFilterByIntensity(2)"><i class="fa-solid fa-spray-can-sparkles"></i></i></button>
+                            <button><i class="fa-solid fa-spray-can-sparkles" data-intensity="3" onclick="toggleFilterByIntensity(3)"><i class="fa-solid fa-spray-can-sparkles"><i class="fa-solid fa-spray-can-sparkles"></i></i></i></button>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+                <div class="product-grid">
+
+                    <!-- PRODUCTO 1 -->
+                    <div class="product-card" data-name="Pack citronela" data-id="1" data-price="2700" data-discount="true" data-intensity="3" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link" href="productos/producto1.html">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 1">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack citronela</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        </a>
+                        <div class="content-card-product">
+                            <span class="discount">-10%</span>
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$2.700 <span>$3.000</span></p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+             </div>
+
+                    <!-- PRODUCTO 2 -->
+                    <div class="product-card" data-name="Pack vainilla" data-id="2" data-price="2850" data-discount="true" data-intensity="1" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 2">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack vainilla</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                            <span class="discount">-5%</span>
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$2.850 <span>$3.000</span></p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                </a>
+             </div>
+
+
+                    <!-- PRODUCTO 3 -->
+                    <div class="product-card" data-name="Pack manzanilla" data-id="3" data-price="3000" data-discount="false" data-intensity="2" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 3">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack manzanilla</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$3.000</p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+                    <!-- PRODUCTO 4 -->
+                    <div class="product-card" data-name="Pack rosa" data-id="4" data-price="3000" data-discount="false" data-intensity="2" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 4">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack rosa</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$3.000</p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+                    <!-- PRODUCTO 5 -->
+                    <div class="product-card" data-name="Pack ruda" data-id="5" data-price="3000" data-discount="false" data-intensity="2" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 5">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack ruda</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$3.000</p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                </a>
+             </div>
+
+                    <!-- PRODUCTO 6 -->
+                    <div class="product-card" data-name="Pack jazmín" data-id="6" data-price="3000" data-discount="false" data-intensity="1" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 6">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack jazmín</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$3.000</p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+                    <!-- PRODUCTO 7 -->
+                    <div class="product-card" data-name="Pack romero" data-id="7" data-price="3000" data-discount="false" data-intensity="3" data-image="/resources/producto1.png" data-category="sahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/producto1.png" alt="Producto 7">
+                        <div class="product-info">
+                            <h3 class="product-title">Pack romero</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                            <div class="intensidad">
+                                <p>INTENSIDAD</p>
+                            <div class="intensidad-icons">
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="price-container">
+                            <p class="price">$3.000</p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                    <!-- PRODUCTO 8 -->
+                    <div class="product-card" data-name="Portasahumerios" data-id="8" data-price="2000" data-discount="false" data-image="/resources/portasahumerios.jpg" data-category="portasahumerios">
+                        <a class="product-link">
+                            <span class="sr-only">View</span>
+                        <img class="product-image" src="/resources/portasahumerios.jpg" alt="Producto 8">
+                        <div class="product-info">
+                            <h3 class="product-title">Portasahumerios</h3>
+                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio minus qui nam animi.</p>
+                        </div>
+                        <div class="content-card-product">
+                        <div class="price-container">
+                            <p class="price">$2.000</p>
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="text" class="quantity" value="1" min="1" maxlength="3">
+                            <button class="add-cart-button"><i class="fa-solid fa-basket-shopping"></i></button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    <div class="container-footer">
+      <div class="footer-top">
+        <div class="logo-section">
+          <a href="#" class="logo-link">
+            <img src="/resources/logo-footer.png" alt="logo_footer" class="logo-footer">
+          </a>
+          <p class="description">Encuentra la paz en cada aroma.</p>
+        </div>
+        <div class="links-section">
+          <h3 class="section-title">Enlaces</h3>
+          <ul class="links-list">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+        <div class="contact-section">
+          <h3 class="section-title">Contacto</h3>
+          <p><i class="fa-solid fa-envelope"></i> elysium2024.ja@gmail.com</p>
+          <p><i class="fa-solid fa-phone"></i> (351) 123-4567</p>
+          <a href="https://maps.app.goo.gl/nwkWK8r8idpYMqgz5"><p><i class="fa-solid fa-location-dot"></i> Colegio de la Inmaculada</p></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="social-media">
+          <a href="https://www.instagram.com/elysium.ja/" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/people/Elysium-Ja/pfbid0akYoQEc3qxVXsPsshHGqkQr8ARCJiYkb46vKJdYY9cyFp6FUBRDoQeumKoShn9tEl/?mibextid=LQQJ4d" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://x.com/elysium_ja/" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.tiktok.com/@elysium.ja" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="mailto:elysium2024.ja@gmail.com" class="social-link"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+        <p class="copyright">&copy; 2024 Elysium.</p>
+      </div>
+    </div>
+  </footer>
+
+
+<script src="/js/script_productos.js"></script>
+</body>
+</html>
